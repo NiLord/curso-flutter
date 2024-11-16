@@ -1,0 +1,86 @@
+# Created by https://www.toptal.com/developers/gitignore/api/dart
+# Edit at https://www.toptal.com/developers/gitignore?templates=dart
+
+# Directories #
+
+# Build results
+.dart_tool/
+build/
+
+# Files #
+
+# Logs
+*.log
+
+# Tools #
+.pub-cache/
+analysis_options.yaml
+.dartignore
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# Generated files #
+*.g.dart
+*.js
+*.js.deps
+*.js.map
+*.dart.js
+*.info.json
+*.patch
+*.pid
+*.pid.lock
+*.pub.dartmanifold
+*.sqlite
+
+# Web #
+lib/$lib$.js
+lib/$lib$.js.deps
+lib/$lib$.js.map
+lib/$lib$.dart.js
+lib/$lib$.info.json
+
+# Mobile #
+
+# iOS
+
+# Flutter
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Android
+
+# Flutter
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+
+# Tests #
+
+# Integration tests
+*.golden
+
+# Unit tests
+test/*.test.dart
+
+# Web tests
+test/**_test.dart
+
+# Code generation #
+lib/generated_plugin_registrant.dart
+
+# miscellaneous #
+*.iml
+*.ipynb
+*.sample
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.tmproj
+*.userprefs
+.macos/
+coverage/
+doc/
+example/
+lib/src/
+test_driver/
+tool/
+tools/
