@@ -39,14 +39,37 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           ],
         ),
       ),
-      floatingActionButton: const Column(
+      floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          CustomButton(icon: Icons.refresh_rounded),
-          SizedBox(height: 10),
-          CustomButton(icon: Icons.plus_one_rounded),
-          SizedBox(height: 10),
-          CustomButton(icon: Icons.exposure_minus_1_rounded)
+          CustomButton(
+            icon: Icons.refresh_rounded,
+            onPressed: () {
+              clickCounter = 0;
+              setState(() {});
+            },
+          ),
+          const SizedBox(height: 10),
+          CustomButton(
+            icon: Icons.plus_one_rounded,
+            onPressed: () {
+              clickCounter++;
+              setState(() {});
+            },
+          ),
+          const SizedBox(height: 10),
+          CustomButton(
+            icon: Icons.exposure_minus_1_rounded,
+            onPressed: () {
+              if (clickCounter == 0) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("No se puede decrementar más")));
+                return;
+              }
+              clickCounter--;
+              setState(() {});
+            },
+          )
         ],
       ),
     );
@@ -55,17 +78,21 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
 
 class CustomButton extends StatelessWidget {
   final IconData icon;
+  final VoidCallback? onPressed;
 
   const CustomButton({
     super.key,
     required this.icon,
+    this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      shape: const StadiumBorder(),
-      onPressed: () {},
+      // shape: const StadiumBorder(),
+      enableFeedback: true,
+      elevation: 5,
+      onPressed: onPressed,
       child: Icon(icon),
     );
   }
