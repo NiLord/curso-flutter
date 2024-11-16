@@ -41,12 +41,21 @@ class _ImageBubble extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.network(
-          "https://yesno.wtf/assets/no/29-6bf57c5bf3fed2dcdbed64afff7a7930.gif",
-          height: 150,
-          width: size.width * 0.7,
-          fit: BoxFit.cover)
-    );
+        borderRadius: BorderRadius.circular(20),
+        child: Image.network(
+            "https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif",
+            height: 150,
+            width: size.width * 0.7,
+            fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+
+              return Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                width: size.width * 0.7,
+                height: 150,
+                child: const CircularProgressIndicator(),
+              );
+            },));
   }
 }
