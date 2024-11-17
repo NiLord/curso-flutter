@@ -24,7 +24,6 @@ class ChatScreen extends StatelessWidget {
 class _ChatHeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     final Row row = Row(
       children: [
         IconButton(
@@ -41,7 +40,7 @@ class _ChatHeaderBar extends StatelessWidget {
             minRadius: 22),
       ],
     );
-    
+
     return AppBar(
         leading: row,
         leadingWidth: 92,
@@ -49,8 +48,7 @@ class _ChatHeaderBar extends StatelessWidget {
         centerTitle: false,
         actions: [
           IconButton(
-              icon: const Icon(Icons.more_vert_outlined),
-              onPressed: () {})
+              icon: const Icon(Icons.more_vert_outlined), onPressed: () {})
         ]);
   }
 }
@@ -58,7 +56,6 @@ class _ChatHeaderBar extends StatelessWidget {
 class _ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final chatProvider = context.watch<ChatProvider>();
 
     return SafeArea(
@@ -67,16 +64,20 @@ class _ChatView extends StatelessWidget {
         child: Column(children: [
           Expanded(
               child: ListView.builder(
-            itemCount: chatProvider.messageList.length,
-            itemBuilder: (context, index) {
-              final message = chatProvider.messageList[index];
-              return (message.fromWho == FromWho.me)
-                  ? MyMessageBubble(message: message,)
-                  : const OtherMessageBubble();
-            }
-          )),
+                  itemCount: chatProvider.messageList.length,
+                  itemBuilder: (context, index) {
+                    final message = chatProvider.messageList[index];
+                    return (message.fromWho == FromWho.me)
+                        ? MyMessageBubble(
+                            message: message,
+                          )
+                        : const OtherMessageBubble();
+                  })),
           // Caja de texto
-          const MessageFieldBox(),
+          MessageFieldBox(
+            // onValue: (value) => chatProvider.sendMessage(value)
+            onValue: chatProvider.sendMessage,
+          ),
           const SizedBox(height: 3)
         ]),
       ),
