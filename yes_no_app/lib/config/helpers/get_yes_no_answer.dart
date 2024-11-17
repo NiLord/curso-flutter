@@ -11,5 +11,5 @@ class GetYesNoAnswer {
     final YesNoModel yesNoModel = YesNoModel.fromJson(response.data);
 
     return yesNoModel.toMessageEntity();
-  }
+  } 
 }

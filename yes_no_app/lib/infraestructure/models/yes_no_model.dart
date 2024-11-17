@@ -23,6 +23,15 @@ class YesNoModel {
         "image": image,
       };
 
-  Message toMessageEntity() =>
-      Message(text: answer, fromWho: FromWho.other, imageUrl: image);
+  Message toMessageEntity() {
+    String response = answer;
+    if (answer == "yes") {
+      response = "Sí";
+    } else if (answer == "no") {
+      response = "No";
+    } else if (answer == "maybe") {
+      response = "Tal Vez";
+    }
+    return Message(text: response, fromWho: FromWho.other, imageUrl: image);
+  }
 }
