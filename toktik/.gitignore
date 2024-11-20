@@ -9,6 +9,8 @@
 .history
 .svn/
 migrate_working_dir/
+#no subir los videos verticales de ejemplo a github
+assets/
 
 # IntelliJ related
 *.iml
